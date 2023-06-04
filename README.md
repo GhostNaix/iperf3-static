@@ -24,14 +24,16 @@ make -j$(nproc)
 ./configure CC="gcc -m32" CXX="g++ -m32" --enable-static-bin
 make -j$(nproc)
 ```
+## Compile commands for ARM system (untested and is native)
+
 **Compile ARM**
 ```
-
+./configure CC="gcc -m32" CXX="g++ -m32" --enable-static-bin
 make -j$(nproc)
 ```
 
 ** Compile ARM64 **
 ```
-
+./configure --enable-static-bin
 make -j$(nproc)
 ```
