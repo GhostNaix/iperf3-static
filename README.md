@@ -32,7 +32,7 @@ make -j$(nproc)
 make -j$(nproc)
 ```
 
-** Compile ARM64 **
+**Compile ARM64**
 ```
 ./configure --enable-static-bin
 make -j$(nproc)
