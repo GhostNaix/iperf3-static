@@ -37,3 +37,14 @@ make -j$(nproc)
 ./configure --enable-static-bin
 make -j$(nproc)
 ```
+
+# Compile iperf3 on Windows 
+1. Install Cygwin
+2. `wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg`
+3. `install apt-cyg /bin`
+4. `apt-cyg install git nano make cmake extra-cmake-modules automake autoconf gcc-core gcc-g++ gdb binutils cygwin-devel w32api-headers w32api-runtime libguile3.0_1 libisl23 libmpc3 libgc1 libffi8`
+5. `git clone https://github.com/esnet/iperf.git`
+6. `cd iperf`
+7. `./configure --enable-static-bin`
+8. `make -j$(nproc)`
+9. `make install`
