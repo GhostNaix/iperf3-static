@@ -8,7 +8,7 @@ Compiling Iperf3 statically on gentoo and cross-platform compile as well as on o
 `USE="multilib static-libs"`
 
 ## Dependencies
-`emerge openssl sys-devel/gcc sys-libs/glibc`
+`emerge openssl sys-devel/gcc sys-libs/glibc openssl`
 
 ## Dependencies x86
 `emerge openssl [abi_x86_32]`
