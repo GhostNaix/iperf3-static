@@ -1,5 +1,7 @@
 # iperf3-static
-Compiling Iperf3 statically on gentoo and cross-platform compile as well
+Compiling Iperf3 statically on gentoo and cross-platform compile as well as on other platforms
+
+# Gentoo/Linux
 
 ## Use Flags
 **Global**
@@ -37,8 +39,9 @@ make -j$(nproc)
 ./configure --enable-static-bin
 make -j$(nproc)
 ```
+# Windows
 
-# Compile iperf3 on Windows x64
+## Compile iperf3 on Windows x64
 1. Install Cygwin
 2. `wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg`
 3. `install apt-cyg /bin`
@@ -49,7 +52,7 @@ make -j$(nproc)
 8. `make -j$(nproc)`
 9. `make install`
 
-# Compile iperf3 on Windows x86
+## Compile iperf3 on Windows x86
 1. Install Cygwin via `setup-x86.exe --allow-unsupported-windows`
 2. set mirror to: `http://ctm.crouchingtigerhiddenfruitbat.org/pub/cygwin/circa/2022/11/23/063457`
 3. `wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg`
