@@ -12,18 +12,19 @@ Compiling Iperf3 statically on gentoo and cross-platform compile as well
 `emerge openssl []`
 
 ## Compile commands
+
 `./bootstrap.sh`
-** Compile x64 **
+**Compile x64**
 ```
 ./configure --enable-static-bin
 make -j$(nproc)
 ```
-** Compile x86 **
+**Compile x86**
 ```
 ./configure CC="gcc -m32" CXX="g++ -m32" --enable-static-bin
 make -j$(nproc)
 ```
-** Compile ARM **
+**Compile ARM**
 ```
 
 make -j$(nproc)
