@@ -12,8 +12,8 @@ Compiling Iperf3 statically on gentoo and cross-platform compile as well
 `emerge openssl []`
 
 ## Compile commands
-
 `./bootstrap.sh`
+
 **Compile x64**
 ```
 ./configure --enable-static-bin
