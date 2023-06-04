@@ -11,7 +11,7 @@ Compiling Iperf3 statically on gentoo and cross-platform compile as well as on o
 `emerge openssl sys-devel/gcc sys-libs/glibc openssl`
 
 ## Dependencies x86
-`emerge openssl [abi_x86_32]`
+`emerge openssl[abi_x86_32]`
 
 ## Compile commands
 `./bootstrap.sh`
