@@ -45,14 +45,16 @@ make -j$(nproc)
 - Install Cygwin
 - Install Wget
 - Run these commands
-```wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
+```
+wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
 install apt-cyg /bin
 apt-cyg install git nano make cmake extra-cmake-modules automake autoconf gcc-core gcc-g++ gdb binutils cygwin-devel w32api-headers w32api-runtime libguile3.0_1 libisl23 libmpc3 libgc1 libffi8
 git clone https://github.com/esnet/iperf.git
 cd iperf
 ./configure --enable-static-bin
 make -j$(nproc)
-make install ```
+make install
+```
 
 ## Compile iperf3 on Windows x86
 
@@ -60,11 +62,13 @@ make install ```
 - set mirror to: `http://ctm.crouchingtigerhiddenfruitbat.org/pub/cygwin/circa/2022/11/23/063457`
 - Install wget
 - Run these commands
-```wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
+```
+wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
 install apt-cyg /bin
 apt-cyg install git nano make cmake extra-cmake-modules automake autoconf gcc-core gcc-g++ gdb binutils cygwin-devel w32api-headers w32api-runtime libguile3.0_1 libisl23 libmpc3 libgc1 libguile2.2_1 libltdl7
 git clone https://github.com/esnet/iperf.git
 cd iperf
 ./configure --enable-static-bin
 make -j$(nproc)
-`make install```
+make install
+```
