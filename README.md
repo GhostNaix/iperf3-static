@@ -10,7 +10,7 @@ Compiling Iperf3 statically on gentoo and cross-platform compile as well as on o
 ```
 sudo emerge openssl[abi_x86_32] --autounmask-write
 sudo dispatch-conf
-sudo emerge openssl[abi_x86_32]
+USE="multilib static-libs" sudo emerge openssl[abi_x86_32]
 ```
 
 ## Compile commands
