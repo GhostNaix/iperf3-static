@@ -2,15 +2,19 @@
 Compiling Iperf3 statically on gentoo and cross-platform compile as well as on other platforms
 
 # Gentoo/Linux
+## Set USE FLAGS
+`sudo nano /etc/portage/package.use/openssl`
+and insert the line
+`dev-libs/openssl static-libs`
 
 ## Dependencies
-`USE="multilib static-libs" sudo emerge openssl sys-devel/gcc sys-libs/glibc openssl`
+`sudo emerge openssl sys-devel/gcc sys-libs/glibc openssl`
 
 ## Dependencies x86
 ```
 sudo emerge openssl[abi_x86_32] --autounmask-write
 sudo dispatch-conf
-USE="multilib static-libs" sudo emerge openssl[abi_x86_32]
+sudo emerge openssl[abi_x86_32]
 ```
 
 ## Compile commands
