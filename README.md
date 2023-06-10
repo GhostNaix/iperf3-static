@@ -1,21 +1,43 @@
 # iperf3-static
 Compiling Iperf3 statically on gentoo and cross-platform compile as well as on other platforms
 
+**Some Warnings**
+- Configure doesn't like spaces in directories
+
+# Prep
+I presumed you are cd into `~` or `$HOME`
+```
+mkdir Compile_Drop
+cd Compile_Drop
+```
+
 # Gentoo/Linux
 ## Set USE FLAGS
 `sudo nano /etc/portage/package.use/openssl`
 and insert the line
 `dev-libs/openssl static-libs`
 
-## Dependencies
-`sudo emerge openssl sys-devel/gcc sys-libs/glibc openssl`
+## Dependencies 
 
-## Dependencies x86
+**Depedencies x64**
+`sudo emerge openssl sys-devel/gcc sys-libs/glibc`
+**Dependencies x86**
 ```
 sudo emerge openssl[abi_x86_32] --autounmask-write
 sudo dispatch-conf
 sudo emerge openssl[abi_x86_32]
 ```
+**Dependencies ARM**
+(This step is only necessary if cross Compiling)
+```
+sudo emerge crossdev
+```
+Then follow this guide https://wiki.gentoo.org/wiki/Crossdev
+```
+crossdev --stable -t aarch64-unknown-linux-gnu
+crossdev --stable -t arm-linux-gnueabi
+```
+
 
 ## Compile commands
 `./bootstrap.sh`
@@ -34,19 +56,50 @@ export CXX="g++ -m32"
 make -j$(nproc)
 strip -s src/iperf3
 ```
-## Compile commands for ARM system (untested and is native, haven't figure out cross-compiling yet)
+## Compile commands for ARM system
+
+**Get openssl**
+```
+mkdir opensslARM opensslAARCH64
+wget https://www.openssl.org/source/openssl-1.1.1u.tar.gz
+tar -zxvf openssl-1.1.1u.tar.gz
+cd openssl-1.1.1u
+```
+**Cross compile openssl for ARM**
+```
+export INSTALL_DIR=~/Compile_Drop/opensslARM # You might want to change this line to a valid directory where you wanna store openssl
+./Configure linux-armv4 shared enable-egd threads enable-md2 enable-rc5 --prefix="$INSTALL_DIR" --openssldir="$INSTALL_DIR/openssl" -static --release --cross-compile-prefix=arm-linux-gnueabi-
+make -j$(nproc)
+make -j$(nproc) depend
+make -j$(nproc) install
+```
+
+**Cross compile openssl for AARCH64**
+```
+export INSTALL_DIR=~/Compile_Drop/opensslAARCH64 # You might want to change this line to a valid directory where you wanna store openssl
+./Configure linux-aarch64 shared enable-egd threads enable-md2 enable-rc5 --prefix="$INSTALL_DIR" --openssldir="$INSTALL_DIR/openssl" -static --release --cross-compile-prefix=aarch64-unknown-linux-gnu- 
+make -j$(nproc)
+make -j$(nproc) depend
+make -j$(nproc) install
+```
 
 **Compile ARM**
+change directory to iperf 3
 ```
-./configure CC="gcc -m32" CXX="g++ -m32" --enable-static-bin
+# You might want to change this line to a valid directory where you compiled stored openssl
+./configure --host=arm-linux-gnueabi --enable-static-bin --with-openssl="${HOME}/Compile_Drop/opensslARM" 
 make -j$(nproc)
+arm-linux-gnueabi-strip -s src/iperf3
 ```
 
 **Compile ARM64**
 ```
-./configure --enable-static-bin
+# You might want to change this line to a valid directory where you compiled stored openssl
+./configure --host=aarch64-unknown-linux-gnu --enable-static-bin --with-openssl="${HOME}/Compile_Drop/opensslAARCH64" 
 make -j$(nproc)
+aarch64-unknown-linux-gnu-strip -s src/iperf3
 ```
+
 # Windows
 
 ## Compile iperf3 on Windows x64
