@@ -24,6 +24,7 @@ sudo emerge openssl[abi_x86_32]
 ```
 ./configure --enable-static-bin
 make -j$(nproc)
+strip -s src/iperf3
 ```
 **Compile x86**
 ```
@@ -31,6 +32,7 @@ export CC="gcc -m32"
 export CXX="g++ -m32"
 ./configure --enable-static-bin
 make -j$(nproc)
+strip -s src/iperf3
 ```
 ## Compile commands for ARM system (untested and is native, haven't figure out cross-compiling yet)
 
