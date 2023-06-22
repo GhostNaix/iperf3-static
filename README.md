@@ -21,6 +21,7 @@ and insert the line
 
 **Depedencies x64**
 `sudo emerge openssl sys-devel/gcc sys-libs/glibc`
+
 **Dependencies x86**
 ```
 sudo emerge openssl[abi_x86_32] --autounmask-write
